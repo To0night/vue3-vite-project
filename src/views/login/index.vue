@@ -1,23 +1,18 @@
-<template>
-	<div class="login"></div>
-</template>
+<script setup>
+import { ref } from 'vue';
 
-<script>
-export default {
-	name: 'login',
-	data() {
-		return {
-			msg: undefined,
-		};
-	},
-	computed: {},
-	watch: {},
-	created() {},
-	methods: {},
-};
+defineProps({
+	msg: String,
+});
+
+const count = ref(0);
 </script>
 
-<style lang="less" scoped>
+<template>
+	<div class="login">login11111111111</div>
+</template>
+
+<style scoped>
 .login {
 	width: 100%;
 }
