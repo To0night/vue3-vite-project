@@ -8,7 +8,7 @@
     <a-sub-menu key="sub1">
       <template #title>
         <span>
-          <user-outlined />
+          <StarOutlined />
           subnav 1
         </span>
       </template>
@@ -20,7 +20,6 @@
     <a-sub-menu key="sub2">
       <template #title>
         <span>
-          <laptop-outlined />
           subnav 2
         </span>
       </template>
@@ -32,7 +31,6 @@
     <a-sub-menu key="sub3">
       <template #title>
         <span>
-          <notification-outlined />
           subnav 3
         </span>
       </template>
@@ -46,8 +44,10 @@
 
 <script>
 import { ref } from 'vue';
+import { StarOutlined } from '@ant-design/icons-vue';
 
 export default {
+  components: {StarOutlined},
   setup() {
     return {
       selectedKeys2: ref(['1']),
