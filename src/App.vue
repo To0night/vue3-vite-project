@@ -1,6 +1,5 @@
 <template>
-	<div id="app" class="theme">
-		<h1>HelloWorld</h1>
+	<div class="app">
 		<router-view />
 	</div>
 </template>
@@ -13,4 +12,9 @@ export default defineComponent({
 });
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.app{
+	width: 100%;
+	height: 100%;
+}
+</style>

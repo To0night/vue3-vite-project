@@ -54,9 +54,10 @@ export default defineConfig({
 		port: '9000',
 		strictPort: false, //设为true时端口被占用则直接退出，不会尝试下一个可用端口
 		force: true, //是否强制依赖预构建
-		hmr: false, //禁用或配置 HMR 连接
+		hmr: true, //禁用或配置 HMR 连接 开启热更新
 		// 传递给 chockidar 的文件系统监视器选项
 		watch: {
+			usePolling: true,   // WSL必须，否则热更新无效
 			ignored: ['!**/node_modules/your-package-name/**'],
 		},
 		// 反向代理配置
@@ -71,7 +72,7 @@ export default defineConfig({
 	pluginOptions: {
 		'style-resources-loader': {
 			preProcessor: 'less',
-			patterns: [path.resolve(__dirname, './src/assets/css/style.less')],
+			// patterns: [path.resolve(__dirname, './src/assets/css/style.less')],
 		},
 	},
 	// css
@@ -84,7 +85,7 @@ export default defineConfig({
 		preprocessorOptions: {
 			less: {
 				javascriptEnabled: true,
-				additionalData: `@import "${path.resolve(__dirname, 'src/assets/styles/base.less')}";`,
+				// additionalData: `@import "${path.resolve(__dirname, 'src/assets/styles/base.less')}";`,
 			},
 		},
 	},
