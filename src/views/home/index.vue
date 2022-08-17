@@ -9,11 +9,11 @@ const count = ref(0);
 </script>
 
 <template>
-	<div class="user">user11111111111</div>
+	<div class="home">home</div>
 </template>
 
 <style lang="less" scoped>
-.user {
+.home {
 	width: 100%;
 }
 </style>

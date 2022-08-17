@@ -12,7 +12,7 @@ const count = ref(0);
 	<div class="login">login11111111111</div>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 .login {
 	width: 100%;
 }
