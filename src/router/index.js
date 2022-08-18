@@ -8,29 +8,34 @@ export const routes = [
 		children: [
 			{
 				path: '/',
-				name: 'home',
+				name: '首页',
 				component: () => import('../views/home/index.vue'),
 			},
 			{
-				path: '/menu',
-				name: 'menu',
+				path: '/组件',
+				name: '组件',
 				children: [
 					{
-						path: '/user',
-						name: 'user',
-						component: () => import('../views/user/index.vue'),
+						path: '/form',
+						name: 'form表单',
+						component: () => import('../views/form/index.vue'),
 					},
+					// {
+					// 	path: '/table',
+					// 	name: 'table表格',
+					// 	component: () => import('../views/table/index.vue'),
+					// },
 					{
-						path: '/manage',
-						name: 'manage',
-						component: () => import('../views/manage/index.vue'),
+						path: '/echart',
+						name: 'echart图标',
+						component: () => import('../views/echart/index.vue'),
 					},
 				],
 			},
 			{
-				path: '/edit',
-				name: 'edit',
-				component: () => import('../views/edit/index.vue'),
+				path: '/user',
+				name: '用户',
+				component: () => import('../views/user/index.vue'),
 			},
 		],
 	},
@@ -41,7 +46,23 @@ export const routes = [
 	},
 ];
 
-export default createRouter({
+const router = createRouter({
 	history: createWebHistory(),
 	routes,
 });
+
+// 全局守卫：登录拦截 本地没有存token,请重新登录
+router.beforeEach((to, from, next) => {
+	// 判断有没有登录
+	if (!localStorage.getItem('token')) {
+		if (to.name == 'login') {
+			next();
+		} else {
+			router.push('login');
+		}
+	} else {
+		next();
+	}
+});
+
+export default router;

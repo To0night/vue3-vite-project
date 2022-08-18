@@ -14,7 +14,7 @@
 
 <script>
 import { useRouter } from 'vue-router';
-import { ref, reactive, toRefs, computed } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
