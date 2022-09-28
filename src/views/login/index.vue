@@ -1,61 +1,83 @@
 <template>
-	<a-form
-		:model="formState"
-		name="basic"
-		:label-col="{ span: 8 }"
-		:wrapper-col="{ span: 16 }"
-		autocomplete="off"
-		@finish="onFinish"
-		@finishFailed="onFinishFailed"
-	>
-		<a-form-item
-			label="Username"
-			name="username"
-			:rules="[{ required: true, message: 'Please input your username!' }]"
-		>
-			<a-input v-model:value="formState.username" />
-		</a-form-item>
+  <div class="login-page">
+    <a-form
+      class="login-form"
+      :model="formState"
+      name="basic"
+      :label-col="{ span: 8 }"
+      :wrapper-col="{ span: 16 }"
+      autocomplete="off"
+      @finish="onFinish"
+      @finishFailed="onFinishFailed"
+    >
+      <a-form-item
+        label="账号"
+        name="account"
+        :rules="[{ required: true, message: '请输入账号!' }]"
+      >
+        <a-input v-model:value="formState.account" />
+      </a-form-item>
 
-		<a-form-item
-			label="Password"
-			name="password"
-			:rules="[{ required: true, message: 'Please input your password!' }]"
-		>
-			<a-input-password v-model:value="formState.password" />
-		</a-form-item>
+      <a-form-item
+        label="密码"
+        name="password"
+        :rules="[{ required: true, message: '请输入密码!' }]"
+      >
+        <a-input-password v-model:value="formState.password" />
+      </a-form-item>
 
-		<a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
-			<a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
-		</a-form-item>
+      <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
+        <a-checkbox v-model:checked="formState.remember">记住密码</a-checkbox>
+      </a-form-item>
 
-		<a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-			<a-button type="primary" html-type="submit">Submit</a-button>
-		</a-form-item>
-	</a-form>
+      <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
+        <a-button type="primary" html-type="submit">登录</a-button>
+      </a-form-item>
+    </a-form>
+  </div>
 </template>
 <script>
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive } from "vue";
+import { useRouter } from "vue-router";
 export default defineComponent({
-	setup() {
-		const formState = reactive({
-			username: '',
-			password: '',
-			remember: true,
-		});
+  setup() {
+    const router = useRouter();
+    const formState = reactive({
+      account: "",
+      password: "",
+      remember: true,
+    });
 
-		const onFinish = (values) => {
-			console.log('Success:', values);
-		};
+    const onFinish = (form) => {
+      console.log("Success:", form);
+      const { account, password } = form;
+      if (account === "soul" && password === "123") {
+        window.localStorage.setItem("token", "token");
+        router.push("/");
+      }
+    };
 
-		const onFinishFailed = (errorInfo) => {
-			console.log('Failed:', errorInfo);
-		};
+    const onFinishFailed = (errorInfo) => {
+      console.log("Failed:", errorInfo);
+    };
 
-		return {
-			formState,
-			onFinish,
-			onFinishFailed,
-		};
-	},
+    return {
+      formState,
+      onFinish,
+      onFinishFailed,
+    };
+  },
 });
 </script>
+
+<style lang="less" scoped>
+.login-page {
+  width: 100%;
+  height: 100%;
+  padding-top: 25%;
+  .login-form {
+    width: 400px;
+    margin-left: calc(50% - 200px);
+  }
+}
+</style>

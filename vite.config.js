@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 // const path = require('path');
-import path from 'path';
+// import path from 'path';
 import { resolve } from 'path'; // 主要用于alias文件路径别名
 
 export default defineConfig({
-	plugins: [vue()],
+	plugins: [vue(), vueJsx()],
 	// 强制预构建插件包
 	optimizeDeps: {
 		//检测需要预构建的依赖项
@@ -57,7 +58,7 @@ export default defineConfig({
 		hmr: true, //禁用或配置 HMR 连接 开启热更新
 		// 传递给 chockidar 的文件系统监视器选项
 		watch: {
-			usePolling: true,   // WSL必须，否则热更新无效
+			usePolling: true, // WSL必须，否则热更新无效
 			ignored: ['!**/node_modules/your-package-name/**'],
 		},
 		// 反向代理配置
