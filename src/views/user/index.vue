@@ -9,7 +9,7 @@ const count = ref(0);
 </script>
 
 <template>
-	<div class="user">user11111111111</div>
+	<div class="user">user</div>
 </template>
 
 <style lang="less" scoped>

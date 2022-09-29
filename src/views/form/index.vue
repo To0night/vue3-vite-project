@@ -9,7 +9,7 @@ const count = ref(0);
 </script>
 
 <template>
-	<div class="manage">manage 11111111111</div>
+	<div class="manage">form</div>
 </template>
 
 <style lang="less" scoped>

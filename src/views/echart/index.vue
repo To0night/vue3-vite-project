@@ -9,7 +9,7 @@ const count = ref(0);
 </script>
 
 <template>
-	<div class="login">edit11111111111</div>
+	<div class="login">echart</div>
 </template>
 
 <style scoped>

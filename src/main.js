@@ -8,6 +8,7 @@ import { createPinia } from "pinia";
 import "./assets/css/global.less";
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
+import * as Icons from "@ant-design/icons-vue";
 
 const app = createApp(App);
 // 使用#http替代axios
@@ -17,3 +18,7 @@ app.use(router);
 app.use(store);
 app.use(Antd);
 app.mount("#app");
+
+for (const i in Icons) {
+  app.component(i, Icons[i]);
+}

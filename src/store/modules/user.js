@@ -4,14 +4,14 @@ const user = {
 		account: '',
 		password: '',
 		routerTree: [],
-		tabValue: '',
+		tabValue: '', 
 		tabList: [],
 	},
 	getters: {
 		getTabList(state) {
 			return state.tabList;
 		},
-		getTabValue(state) {
+		getTabValue(state) {  
 			return state.tabValue;
 		},
 	},
@@ -35,6 +35,16 @@ const user = {
 				);
 			}
 		},
+		exchangeTabList(state, [startTab, endTab]) {
+			let startIndex = state.tabList.findIndex((v) => v === startTab)
+			let endIndex = state.tabList.findIndex((v) => v === endTab)
+			state.tabList.splice(startIndex, 1)
+			state.tabList.splice(endIndex, 0, startTab)
+		},
+		deleteOtherTabList(state, tab) {
+			state.tabList = [tab]
+			state.tabValue = tab
+		}
 	},
 	actions: {},
 };
