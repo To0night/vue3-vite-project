@@ -1,10 +1,11 @@
 module.exports = {
   root: true, // 停止在父级目录中寻找
   env: {
+    browser: true,
     es6: true, // 启用 ES6 语法支持以及新的 ES6 全局变量或类型
     node: true // Node.js 全局变量和 Node.js 作用域
   },
-  extends: ['plugin:vue/essential', '@vue/standard'],
+  extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/eslint-config-prettier', '@vue/standard'],
   rules: {
     'no-alert': 0, // 禁止使用alert confirm prompt
     'no-console': 0, // 禁止使用console
@@ -50,8 +51,15 @@ module.exports = {
     'no-callback-literal': 0,
     'multiline-ternary': 0
   },
+  globals: {
+    defineEmits: "readonly",
+    defineProps: "readonly",
+    defineExpose: "readonly",
+    withDefaults: "readonly",
+  },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: 'babel-eslint',
+    ecmaVersion: 'latest'
   },
   overrides: [
     {
