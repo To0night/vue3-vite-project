@@ -1,52 +1,36 @@
+<script setup>
+import EChart from '@/components/echart/index.vue'
+const options = {
+	title: {
+		text: 'ECharts 示例'
+	},
+	tooltip: {},
+	xAxis: {
+		data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+	},
+	yAxis: {},
+	series: [
+		{
+			name: '销量',
+			type: 'bar',
+			data: [5, 20, 36, 10, 10, 20]
+		}
+	]
+}
+
+</script>
+
 <template>
 	<div class="echart">
-		<div>echart</div>
+		<h2>echart</h2>
 		<div>
-			<div ref="barChart" class="bar-chart"></div>
+			<EChart :options="options" :width="300"></EChart>
 		</div>
 	</div>
 </template>
 
-<script>
-import { ref, onMounted } from 'vue';
-import { echarts } from './require';
-
-export default {
-  setup() {
-		const barChart = ref(null)
-		// 接下来的使用就跟之前一样，初始化图表，设置配置项
-		onMounted(() => {
-			console.log(barChart.value, 'barChart');
-			// let myChart = echarts.init(barChart);
-			// myChart.setOption({
-			// 	title: {
-			// 		text: 'ECharts 入门示例'
-			// 	},
-			// 	tooltip: {},
-			// 	xAxis: {
-			// 		data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-			// 	},
-			// 	yAxis: {},
-			// 	series: [
-			// 		{
-			// 			name: '销量',
-			// 			type: 'bar',
-			// 			data: [5, 20, 36, 10, 10, 20]
-			// 		}
-			// 	]
-			// });
-		})
-		
-	}
-}
-</script>
-
-<style scoped>
+<style lang="less" scoped>
 .echart {
 	width: 100%;
-	.bar-chart{
-		width: 300px;
-		height: 300px
-	}
 }
 </style>
