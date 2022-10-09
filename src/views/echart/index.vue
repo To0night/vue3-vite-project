@@ -1,6 +1,14 @@
+<template>
+	<div class="echart">
+		<h2>echart</h2>
+		<div>
+			<EChart :options="options" :width="300"> </EChart>
+		</div>
+	</div>
+</template>
+
 <script setup>
 import EChart from '@/components/echart/index.vue'
-const options = {
 	title: {
 		text: 'ECharts 示例'
 	},
@@ -17,17 +25,8 @@ const options = {
 		}
 	]
 }
-
 </script>
 
-<template>
-	<div class="echart">
-		<h2>echart</h2>
-		<div>
-			<EChart :options="options" :width="300"></EChart>
-		</div>
-	</div>
-</template>
 
 <style lang="less" scoped>
 .echart {

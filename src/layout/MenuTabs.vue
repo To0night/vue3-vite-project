@@ -30,7 +30,7 @@ import { useStore } from 'vuex';
 import { message } from 'ant-design-vue';
 export default {
 	name: 'MenuTabs',
-	setup() {
+	setup(props, context) {
 		const route = useRoute(); 
 		const router = useRouter();
 		const store = useStore(); 
