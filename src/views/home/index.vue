@@ -9,7 +9,7 @@ const count = ref(0);
 </script>
 
 <template>
-	<div class="home">home</div>
+	<div class="home">home111</div>
 </template>
 
 <style lang="less" scoped>
