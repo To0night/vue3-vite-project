@@ -1,9 +1,7 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-// const path = require('path');
-// import path from 'path';
-import { resolve } from 'path'; // 主要用于alias文件路径别名
+import { resolve, join } from 'path'; // 主要用于alias文件路径别名
 
 export default defineConfig({
 	plugins: [vue(), vueJsx()],
@@ -145,5 +143,21 @@ export default defineConfig({
 		external: [],
 		//列出的是防止被 SSR 外部化依赖项
 		noExternal: [],
+	},
+	transpileDependencies: true,
+	configureWebpack: {
+		resolve: { extensions: ['.ts', '.tsx', '.js', '.json'] },
+		module: {
+			rules: [
+				{
+					test: /\.tsx?$/,
+					loader: 'ts-loader',
+					exclude: /node_modules/,
+					options: {
+						appendTsSuffixTo: [/\.vue$/],
+					},
+				},
+			],
+		},
 	},
 });
